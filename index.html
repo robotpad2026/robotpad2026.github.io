@@ -146,18 +146,6 @@
             border-top: 1px solid rgba(196, 181, 253, 0.14);
             background: linear-gradient(180deg, rgba(18, 10, 36, 0.35), rgba(12, 8, 24, 0.5));
         }
-
-        .teaser-frame {
-            aspect-ratio: 3 / 1.54;
-            overflow: hidden;
-        }
-
-        .teaser-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
     </style>
     <script>
         tailwind.config = {
@@ -246,9 +234,7 @@
                     <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-brand-100">Paris, France</span>
                 </div>
             </div>
-            <div class="teaser-frame">
-                <img src="teaser.png?v=2" alt="RoboPAD workshop teaser: post-training adaptation pipeline for robot foundation models" loading="eager" decoding="async" />
-            </div>
+            <img src="teaser.png?v=3" alt="RoboPAD workshop teaser: post-training adaptation pipeline for robot foundation models" class="block h-auto w-full" loading="eager" decoding="async" />
             <div class="teaser-easter-egg px-6 py-4 md:px-8 md:py-5">
                 <p class="text-sm leading-relaxed text-brand-100/60 md:text-[0.95rem]">
                     <span class="mr-1.5" aria-hidden="true">🥖</span>
