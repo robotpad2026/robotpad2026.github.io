@@ -141,6 +141,11 @@
         @media (prefers-reduced-motion: reduce) {
             .fade-up { animation: none; }
         }
+
+        .teaser-easter-egg {
+            border-top: 1px solid rgba(196, 181, 253, 0.14);
+            background: linear-gradient(180deg, rgba(18, 10, 36, 0.35), rgba(12, 8, 24, 0.5));
+        }
     </style>
     <script>
         tailwind.config = {
@@ -230,6 +235,15 @@
                 </div>
             </div>
             <img src="teaser.png" alt="RoboPAD workshop teaser: post-training adaptation pipeline for robot foundation models" class="block h-auto w-full" loading="eager" decoding="async" />
+            <div class="teaser-easter-egg px-6 py-4 md:px-8 md:py-5">
+                <p class="text-sm leading-relaxed text-brand-100/60 md:text-[0.95rem]">
+                    <span class="mr-1.5" aria-hidden="true">🥖</span>
+                    <span class="font-semibold text-brand-200/90">Paris Easter egg:</span>
+                    How many French touches can you spot in the teaser above? When you submit on
+                    <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-200 underline decoration-brand-400/35 underline-offset-2 hover:text-white">OpenReview</a>,
+                    include a short list of the elements you find—authors who catch enough of them will receive a small workshop gift in Paris.
+                </p>
+            </div>
         </header>
 
         <section id="about" class="panel fade-up mb-10 rounded-2xl p-7 md:p-9" style="animation-delay:0.05s">
