@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call for Papers · RoboPAD @ NeurIPS 2026</title>
+    <meta name="description" content="Call for papers for RoboPAD: Post-Training Adaptation of Robot Foundation Models, a NeurIPS 2026 workshop.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #f4f0ff;
+            --muted: #b7aecf;
+            --violet: #c4b5fd;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse 80% 50% at 8% -8%, rgba(196, 181, 253, 0.28), transparent 55%),
+                radial-gradient(ellipse 55% 40% at 92% 0%, rgba(167, 139, 250, 0.2), transparent 52%),
+                linear-gradient(180deg, #2a1b4a 0%, #23163f 40%, #1c1235 100%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .section-title {
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 0.28rem;
+            height: 1.25rem;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #ddd6fe, #8b5cf6 55%, #6d28d9);
+            flex-shrink: 0;
+        }
+
+        .panel {
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            background: linear-gradient(165deg, rgba(55, 36, 98, 0.72), rgba(36, 22, 68, 0.82));
+            box-shadow: 0 18px 48px rgba(24, 12, 48, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #d4c9ea;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: #ddd6fe; }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.35rem;
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #c4b5fd, #8b5cf6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after { transform: scaleX(1); }
+
+        .nav-link.active { color: #ddd6fe; }
+
+        .guide-item {
+            border-bottom: 1px solid rgba(196, 181, 253, 0.12);
+            padding: 1rem 0;
+        }
+
+        .guide-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .topic-block {
+            border: 1px solid rgba(196, 181, 253, 0.16);
+            background: rgba(8, 4, 18, 0.28);
+            border-radius: 1rem;
+            padding: 1.25rem 1.35rem;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .kpi-pill {
+            border-radius: 999px;
+            border: 2px solid rgba(167, 139, 250, 0.55);
+            background:
+                radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.22), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.24), transparent 60%),
+                rgba(15, 23, 42, 0.88);
+            box-shadow: 0 16px 44px rgba(124, 58, 237, 0.22);
+            padding: 22px 24px;
+            text-align: center;
+        }
+
+        .kpi-label {
+            font-size: 14px;
+            font-weight: 850;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c7d2fe;
+        }
+
+        .kpi-text {
+            margin-top: 10px;
+            font-size: 28px;
+            line-height: 1.08;
+            font-weight: 950;
+            letter-spacing: -0.01em;
+            color: white;
+        }
+
+        .kpi-text em {
+            all: unset;
+            color: #a5f3fc;
+            font-weight: 960;
+        }
+
+        .kpi-pill--cta {
+            border: 2px solid rgba(221, 214, 254, 0.9);
+            background:
+                radial-gradient(circle at 0% 0%, rgba(253, 224, 71, 0.22), transparent 55%),
+                linear-gradient(135deg, #a78bfa 0%, #7c3aed 55%, #6d28d9 100%);
+            box-shadow:
+                0 18px 48px rgba(139, 92, 246, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: translateZ(0);
+        }
+
+        .kpi-pill--cta .kpi-label {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .kpi-pill--cta .kpi-text {
+            color: #fff;
+            letter-spacing: -0.02em;
+            text-shadow: 0 1px 2px rgba(76, 29, 149, 0.45);
+        }
+
+        .kpi-pill--cta .cta-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-top: 12px;
+            font-size: 1.55rem;
+            line-height: 1.05;
+            font-weight: 960;
+        }
+
+        .kpi-pill--cta .cta-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.2rem;
+            width: 2.2rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.22);
+            color: #4c1d95;
+            font-weight: 950;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .kpi-pill--cta:hover .cta-arrow {
+            transform: translateX(4px) translateY(-1px);
+            background: rgba(255, 255, 255, 0.34);
+        }
+
+        .award-card {
+            border-radius: 24px;
+            border: 2px solid rgba(250, 204, 21, 0.4);
+            background:
+                radial-gradient(circle at 0% 0%, rgba(250, 204, 21, 0.2), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.16), transparent 60%),
+                linear-gradient(165deg, rgba(67, 35, 112, 0.72), rgba(45, 23, 76, 0.82));
+            box-shadow: 0 20px 56px rgba(124, 58, 237, 0.22);
+            padding: 28px;
+        }
+
+        .award-kicker {
+            color: #fde68a;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .award-title {
+            margin-top: 10px;
+            font-size: 34px;
+            line-height: 1.05;
+            font-weight: 950;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        @media (max-width: 640px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+            .kpi-text { font-size: 22px; }
+            .award-title { font-size: 28px; }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="min-h-screen">
+    <div class="sticky top-0 z-50 w-full">
+        <div class="border-b border-brand-400/20 bg-gradient-to-r from-violet-950/95 via-fuchsia-950/80 to-indigo-950/95 px-4 py-2.5 text-center backdrop-blur">
+            <p class="text-sm font-medium text-brand-100 md:text-base">
+                <span class="font-semibold text-brand-200">Call for Papers Now Open</span>
+                <span class="mx-2 text-brand-400/50">·</span>
+                Submission Deadline: <span class="text-white">August 29, 2026 (AoE)</span>
+            </p>
+        </div>
+
+        <nav class="border-b border-white/5 bg-[#23163f]/78 backdrop-blur-xl">
+            <div class="container mx-auto max-w-6xl px-4">
+                <div class="flex h-16 items-center justify-between">
+                    <a href="index.html" class="brand text-lg font-extrabold tracking-tight text-brand-200">
+                        RoboPAD <span class="font-medium text-brand-300/60">@ NeurIPS 2026</span>
+                    </a>
+                    <div class="hidden items-center gap-7 md:flex">
+                        <a href="index.html#about" class="nav-link text-sm font-medium">About</a>
+                        <a href="call-for-papers.html" class="nav-link active text-sm font-medium">Call for Papers</a>
+                        <a href="index.html#speakers" class="nav-link text-sm font-medium">Speakers</a>
+                        <a href="index.html#schedule" class="nav-link text-sm font-medium">Program</a>
+                        <a href="index.html#organizers" class="nav-link text-sm font-medium">Organizers</a>
+                        <a href="index.html#contact" class="nav-link text-sm font-medium">Contact</a>
+                        <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="rounded-full bg-brand-300 px-4 py-2 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">Submit</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="rounded-lg border border-brand-400/25 p-2 text-brand-100" aria-label="Open menu">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden space-y-1 pb-4 md:hidden">
+                    <a href="index.html#about" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">About</a>
+                    <a href="call-for-papers.html" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Call for Papers</a>
+                    <a href="index.html#speakers" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Speakers</a>
+                    <a href="index.html#schedule" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Program</a>
+                    <a href="index.html#organizers" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Organizers</a>
+                    <a href="index.html#contact" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="container mx-auto max-w-4xl px-4 py-10 md:py-14">
+        <header class="mb-10">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-300">NeurIPS 2026 Workshop</p>
+            <h1 class="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-5xl">Call for Papers</h1>
+            <div class="kpi-grid">
+                <a class="kpi-pill block transition hover:-translate-y-0.5" href="#important-dates">
+                    <div class="kpi-label">Submission deadline</div>
+                    <div class="kpi-text">29 August 2026 <em>(AoE)</em></div>
+                </a>
+                <a class="kpi-pill kpi-pill--cta block transition hover:-translate-y-1" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer">
+                    <div class="kpi-label">Submission portal</div>
+                    <div class="cta-row">
+                        <span>Submit on OpenReview</span>
+                        <span class="cta-arrow" aria-hidden="true">→</span>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <p class="text-[1.06rem] leading-relaxed text-brand-100/85">
+                We invite submissions to <strong class="text-white">RoboPAD: Post-Training Adaptation of Robot Foundation Models</strong>, a NeurIPS 2026 workshop in Paris, France. RoboPAD is a <strong class="text-white">non-archival workshop</strong> designed to be a discussion venue rather than a formal proceedings track.
+            </p>
+            <p class="mt-4 text-[1.06rem] leading-relaxed text-brand-100/85">
+                RoboPAD focuses on <strong class="text-white">post-training</strong> as an algorithmic stage after pretraining: the closed-loop process of adapting, correcting, evaluating, and improving robot foundation models under real-world constraints. The central question is: after a robot foundation model has been pretrained, how should it be adapted, corrected, personalized, evaluated, and safely improved?
+            </p>
+            <p class="mt-4 text-[1.06rem] leading-relaxed text-brand-100/85">
+                Accepted submissions are intended for <strong class="text-white">presentation and community discussion</strong>. Accepted work does not appear in the official NeurIPS proceedings and does not preclude future archival submission.
+            </p>
+        </section>
+
+        <section class="award-card mb-8">
+            <div class="award-kicker">Awards</div>
+            <div class="award-title">RoboPAD Best Paper Award</div>
+            <p class="mt-4 text-[1.06rem] leading-relaxed text-brand-100/90">
+                One submission will receive the <strong class="text-white">Best Paper Award</strong>, with an award certificate and recognition during the workshop. Additional <strong class="text-white">Best Paper Runner-Up</strong> and <strong class="text-white">Highlight Papers</strong> may also be recognized. All accepted papers are eligible; the final awardee is selected by the area chairs and organizers based on technical quality, novelty, clarity, and fit to the workshop theme.
+            </p>
+        </section>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Eligibility &amp; What We Accept</h2>
+            <p class="mb-5 text-[1.05rem] leading-relaxed text-brand-100/85">
+                RoboPAD broadly welcomes any work related to post-training adaptation of robot foundation models. Because the workshop is <strong class="text-white">non-archival and discussion-oriented</strong>, we intentionally keep eligibility broad—authors are expected to respect the policies of other venues involved.
+            </p>
+            <ul class="list-disc space-y-3 pl-5 text-[1.05rem] leading-relaxed text-brand-100/85">
+                <li><strong class="text-white">Work in progress.</strong> Early-stage results, negative results, open problems, and discussion papers are all welcome.</li>
+                <li><strong class="text-white">Papers under review elsewhere.</strong> Concurrent submission to conferences, journals, or other workshops is allowed.</li>
+                <li><strong class="text-white">Already published or recently accepted papers.</strong> Papers previously published or accepted at archival venues (main conference, journal, prior workshop) may be resubmitted to RoboPAD for discussion and presentation, provided the authors confirm this is compatible with the original venue policy.</li>
+                <li><strong class="text-white">Preprints, arXiv papers, and open-source / benchmark releases.</strong> Standalone benchmark, data, evaluation, or position contributions are all in scope.</li>
+                <li><strong class="text-white">Contribution types.</strong> We welcome technical, empirical, theoretical, benchmark, and perspective / discussion submissions.</li>
+            </ul>
+            <p class="mt-5 text-[1.05rem] leading-relaxed text-brand-100/85">
+                <strong class="text-white">Author responsibility:</strong> Authors are responsible for ensuring that submission to RoboPAD is compatible with the policies of any other venue involved. If a paper is accepted for presentation elsewhere and the authors are unsure, they should disclose the situation at submission time and resolve conflicts with the other venue chairs directly.
+            </p>
+        </section>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Submission Format</h2>
+            <p class="mb-5 text-[1.05rem] leading-relaxed text-brand-100/85">
+                RoboPAD uses a <strong class="text-white">unified page upper bound</strong> aligned with the standard NeurIPS conference content-page limit. Because the workshop is <strong class="text-white">non-archival</strong>, we intentionally do not force a single short length: authors may submit shorter workshop-style papers, or longer more complete technical papers, up to the same shared page cap.
+            </p>
+            <div class="space-y-0 text-[1.02rem] leading-relaxed text-brand-100/85">
+                <div class="guide-item">
+                    <p><strong class="text-white">Paper length:</strong> <span class="text-white">Up to 9 pages of main content</span>, including all text, figures, and tables. References and appendix are not counted toward this page limit and are <strong class="text-white">unlimited</strong>. Shorter workshop-style submissions (e.g., 4–7 pages) are fully welcome; the 9-page cap is an upper bound, not a target length.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Template:</strong> The official <a href="https://neurips.cc" target="_blank" rel="noopener noreferrer" class="text-brand-200 hover:text-white">NeurIPS 2026</a> LaTeX style files, prepared in workshop format (<code class="rounded bg-black/25 px-1.5 py-0.5 text-[0.9em] text-brand-200">\usepackage[dblblindworkshop]{neurips_2026}</code> or the equivalent workshop style). Submissions that exceed the 9-page content-page limit will be desk-rejected without review.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">References and appendix:</strong> References and appendix are <strong class="text-white">unlimited</strong>. The appendix may be included in the same PDF as the main submission, directly after the references. Reviewers are not required to read the appendix; key technical claims and experiments should be placed in the main 9-page body.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Checklist:</strong> The NeurIPS main-conference paper checklist is <strong class="text-white">not required</strong> for RoboPAD workshop submissions. A short Limitations / Broader Impact discussion is still encouraged but not mandatory.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Review mode:</strong> <span class="text-white">Double-blind</span>. Submissions must be anonymized. Do not include author names, affiliations, or obvious self-citations without clearly anonymizing them in the review copy (e.g., “Anonymous et al.” or by omitting names and institutional links in figures / acknowledgments).</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Code, data, and supplementary videos:</strong> Optional but strongly encouraged. You may link to anonymized repositories or URLs in the paper, and include additional results in the appendix. Separate supplementary ZIP uploads are not required for the workshop submission.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Submission &amp; Review Process</h2>
+            <p class="mb-5 text-[1.05rem] leading-relaxed text-brand-100/85">
+                Submissions are managed on <strong class="text-white">OpenReview</strong>. We follow a lightweight review process designed for a workshop, while still maintaining double-blind review and conflict-of-interest enforcement.
+            </p>
+            <div class="space-y-0 text-[1.02rem] leading-relaxed text-brand-100/85">
+                <div class="guide-item">
+                    <p><strong class="text-white">Platform:</strong> <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-200 underline decoration-brand-400/40 underline-offset-2 hover:text-white">NeurIPS 2026 Workshop / RoboPAD on OpenReview</a></p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">OpenReview profiles:</strong> All authors and reviewers must have an OpenReview profile by the submission deadline. New profiles created without an institutional email may take time to activate; we recommend setting up profiles well in advance.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Review pipeline:</strong> Each submission receives at least two to three reviews; meta-reviews and final acceptance decisions are made by the RoboPAD area chairs and organizing committee.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">LLM policy (authors):</strong> Authors may use LLM-based tools in accordance with the NeurIPS 2026 author policy. Authors remain fully responsible for the correctness and originality of all submitted content. Any substantive use of LLMs as part of the research methodology should be clearly disclosed.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">LLM policy (reviewers):</strong> Reviewers and area chairs may not upload submissions or submission content to external LLM services, because this risks leaking confidential material.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">Post-acceptance archival status:</strong> RoboPAD is <strong class="text-white">non-archival</strong>. Accepted papers may be listed on OpenReview and the workshop website at the authors’ option. Accepted submissions are not part of the official NeurIPS proceedings. Authors remain free to update their arXiv versions and resubmit elsewhere in the future.</p>
+                </div>
+                <div class="guide-item">
+                    <p><strong class="text-white">In-person presentation:</strong> At least one author of each accepted paper is expected to attend the workshop <strong class="text-white">in person</strong> in Paris and present the work. Accepted submissions will be assigned either a poster slot or an oral slot (a subset of accepted papers). Registration and travel are the responsibility of the authors; acceptance does not include NeurIPS registration or travel funding.</p>
+                </div>
+            </div>
+            <div class="mt-7 flex flex-wrap gap-3">
+                <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-brand-400/30 bg-brand-500/15 px-5 py-2.5 text-sm font-semibold text-brand-100 transition hover:border-brand-300/50 hover:bg-brand-500/25">
+                    OpenReview Portal
+                </a>
+                <a href="index.html" class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-brand-100/85 transition hover:border-brand-400/35 hover:text-white">
+                    Back to Homepage
+                </a>
+            </div>
+        </section>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Topics of Interest</h2>
+            <p class="mb-6 text-[1.05rem] leading-relaxed text-brand-100/85">
+                The six themes below organize the main algorithmic problems in robot-foundation-model post-training. We welcome submissions on any related topic that engages substantively with adaptation, evaluation, and improvement after pretraining.
+            </p>
+            <div class="space-y-4">
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">1. Feedback- and intervention-driven adaptation</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>Learning from human corrections, preferences, teleoperation, and shared autonomy</li>
+                        <li>Online interventions, failure recovery, and interactive policy improvement</li>
+                        <li>Preference learning and human-in-the-loop specialization after pretraining</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">2. Policy optimization and specialization after pretraining</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>RL fine-tuning of VLAs and pretrained robot policies</li>
+                        <li>Offline-to-online improvement, action decoders, and in-context policy adaptation</li>
+                        <li>Fast specialization with limited real-world data</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">3. World-model- and simulation-driven adaptation</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>Adapting latent dynamics, predictive models, and task-level models</li>
+                        <li>Simulation-generated data for post-training under changing environments</li>
+                        <li>Closed-loop refinement of world models and policies before real-world deployment</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">4. Reasoning, memory, and agentic robot adaptation</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>Coupling deliberative multimodal reasoning with reactive control</li>
+                        <li>Long-term robot memory, task decomposition, and when-to-think decisions</li>
+                        <li>Agentic pipelines for correction, replanning, and recovery</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">5. Cross-embodiment and whole-body adaptation</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>Humanoids, dexterous hands, mobile manipulators, and embodiment transfer</li>
+                        <li>Specialist distillation, sim-to-real adaptation, and safety-aware post-training</li>
+                        <li>Whole-body and multi-robot specialization after pretraining</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3 class="mb-2 text-base font-bold text-white">6. Evaluation, safety, and robustness after adaptation</h3>
+                    <ul class="list-disc space-y-1.5 pl-5 text-brand-100/80">
+                        <li>Reproducible protocols, robustness under distribution shift, and recovery metrics</li>
+                        <li>Constraint-respecting fine-tuning, reliability, and long-horizon evaluation</li>
+                        <li>Benchmarks and reporting practices for post-training outcomes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Presentation &amp; Accepted Papers</h2>
+            <p class="text-[1.05rem] leading-relaxed text-brand-100/85">
+                Accepted papers will be presented in <strong class="text-white">poster sessions</strong> on the day of the workshop. A subset of papers will additionally be selected for <strong class="text-white">oral / spotlight</strong> presentations with Q&amp;A. All accepted papers are eligible for the Best Paper Award.
+            </p>
+            <p class="mt-4 text-[1.05rem] leading-relaxed text-brand-100/85">
+                No formal camera-ready paper is required. Authors are welcome to keep their submission up to date on arXiv and to share slides / posters after acceptance.
+            </p>
+        </section>
+
+        <section id="important-dates" class="panel mb-8 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Important Dates</h2>
+            <div class="overflow-hidden rounded-xl border border-brand-400/15">
+                <table class="w-full text-left text-[1.02rem]">
+                    <tbody class="divide-y divide-brand-400/10 text-brand-100/85">
+                        <tr>
+                            <td class="px-4 py-3 font-semibold text-brand-200">Call for papers</td>
+                            <td class="px-4 py-3">Now open — <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-200 underline decoration-brand-400/40 underline-offset-2 hover:text-white">submission via OpenReview</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-semibold text-brand-200">Submission deadline</td>
+                            <td class="px-4 py-3">29 August 2026 (AoE)</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-semibold text-brand-200">Author notifications</td>
+                            <td class="px-4 py-3">29 September 2026 (AoE)</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-semibold text-brand-200">Workshop date</td>
+                            <td class="px-4 py-3">One day within 12–13 December 2026, Paris, France</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel mb-6 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Questions?</h2>
+            <p class="text-[1.05rem] leading-relaxed text-brand-100/85">
+                For questions about submissions, please contact the organizing committee at
+                <a href="mailto:Li_Shijie@a-star.edu.sg" class="font-semibold text-brand-200 underline decoration-brand-400/40 underline-offset-2 hover:text-white">Li_Shijie@a-star.edu.sg</a>.
+            </p>
+            <p class="mt-4 text-sm text-brand-100/55">
+                This workshop is part of NeurIPS 2026. For general conference information, visit
+                <a href="https://neurips.cc" target="_blank" rel="noopener noreferrer" class="text-brand-200 hover:text-white">neurips.cc</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="border-t border-brand-400/10 py-8 text-center">
+        <p class="text-sm text-brand-100/40">&copy; 2026 RoboPAD Workshop Organizers</p>
+    </footer>
+</body>
+</html>

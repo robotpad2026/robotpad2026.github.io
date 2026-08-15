@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboPAD Workshop @ NeurIPS 2026</title>
+    <meta name="description" content="RoboPAD is a NeurIPS 2026 workshop on post-training adaptation of robot foundation models.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #f4f0ff;
+            --muted: #b7aecf;
+            --violet: #c4b5fd;
+            --violet-bright: #a78bfa;
+            --violet-deep: #7c3aed;
+            --panel: rgba(22, 14, 42, 0.72);
+            --line: rgba(196, 181, 253, 0.18);
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse 80% 50% at 8% -8%, rgba(196, 181, 253, 0.28), transparent 55%),
+                radial-gradient(ellipse 55% 40% at 92% 0%, rgba(167, 139, 250, 0.2), transparent 52%),
+                radial-gradient(ellipse 45% 30% at 50% 100%, rgba(139, 92, 246, 0.14), transparent 55%),
+                linear-gradient(180deg, #2a1b4a 0%, #23163f 40%, #1c1235 100%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 0.3rem;
+            height: 1.4rem;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #ddd6fe, #8b5cf6 55%, #6d28d9);
+            flex-shrink: 0;
+        }
+
+        .panel {
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            background:
+                linear-gradient(165deg, rgba(55, 36, 98, 0.72), rgba(36, 22, 68, 0.82));
+            box-shadow:
+                0 18px 48px rgba(24, 12, 48, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #d4c9ea;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: #ddd6fe; }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.35rem;
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #c4b5fd, #8b5cf6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-link:hover::after { transform: scaleX(1); }
+
+        .topic-chip {
+            border: 1px solid rgba(196, 181, 253, 0.28);
+            background: rgba(139, 92, 246, 0.1);
+            color: #ddd6fe;
+            transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+
+        .topic-chip:hover {
+            border-color: rgba(196, 181, 253, 0.55);
+            background: rgba(139, 92, 246, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .date-card,
+        .guide-card,
+        .person-card {
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            background: rgba(28, 16, 56, 0.45);
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .date-card:hover,
+        .guide-card:hover,
+        .person-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(196, 181, 253, 0.4);
+            box-shadow: 0 14px 36px rgba(76, 29, 149, 0.22);
+        }
+
+        .hero-shell {
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            box-shadow:
+                0 0 0 1px rgba(124, 58, 237, 0.08),
+                0 28px 80px rgba(0, 0, 0, 0.45),
+                0 0 80px rgba(124, 58, 237, 0.12);
+        }
+
+        .pill {
+            border: 1px solid rgba(196, 181, 253, 0.28);
+            background: rgba(42, 26, 78, 0.7);
+        }
+
+        .fade-up {
+            animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up { animation: none; }
+        }
+
+        .teaser-easter-egg {
+            border-top: 1px solid rgba(196, 181, 253, 0.14);
+            background: linear-gradient(180deg, rgba(18, 10, 36, 0.35), rgba(12, 8, 24, 0.5));
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="min-h-screen">
+    <div class="sticky top-0 z-50 w-full">
+        <div class="border-b border-brand-400/20 bg-gradient-to-r from-violet-950/95 via-fuchsia-950/80 to-indigo-950/95 px-4 py-2.5 text-center backdrop-blur">
+            <p class="text-sm font-medium text-brand-100 md:text-base">
+                <span class="font-semibold text-brand-200">Call for Papers Now Open</span>
+                <span class="mx-2 text-brand-400/50">·</span>
+                Submission Deadline: <span class="text-white">August 29, 2026 (AoE)</span>
+            </p>
+        </div>
+
+        <nav class="border-b border-white/5 bg-[#23163f]/78 backdrop-blur-xl">
+            <div class="container mx-auto max-w-6xl px-4">
+                <div class="flex h-16 items-center justify-between">
+                    <a href="#" class="brand text-lg font-extrabold tracking-tight text-brand-200">
+                        RoboPAD <span class="font-medium text-brand-300/60">@ NeurIPS 2026</span>
+                    </a>
+                    <div class="hidden items-center gap-7 md:flex">
+                        <a href="#about" class="nav-link text-sm font-medium">About</a>
+                        <a href="call-for-papers.html" class="nav-link text-sm font-medium">Call for Papers</a>
+                        <a href="#challenge" class="nav-link text-sm font-medium">Challenge</a>
+                        <a href="#speakers" class="nav-link text-sm font-medium">Speakers</a>
+                        <a href="#schedule" class="nav-link text-sm font-medium">Program</a>
+                        <a href="#organizers" class="nav-link text-sm font-medium">Organizers</a>
+                        <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+                        <a href="call-for-papers.html" class="rounded-full bg-brand-300 px-4 py-2 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">Submit</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="rounded-lg border border-brand-400/25 p-2 text-brand-100" aria-label="Open menu">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden space-y-1 pb-4 md:hidden">
+                    <a href="#about" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">About</a>
+                    <a href="call-for-papers.html" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Call for Papers</a>
+                    <a href="#challenge" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Challenge</a>
+                    <a href="#speakers" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Speakers</a>
+                    <a href="#schedule" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Program</a>
+                    <a href="#organizers" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Organizers</a>
+                    <a href="#contact" class="block rounded-lg px-3 py-2 text-brand-100 hover:bg-white/5">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="container mx-auto max-w-6xl px-4 py-10 md:py-14">
+        <header class="hero-shell fade-up mb-12 overflow-hidden rounded-2xl bg-[#2a1b4a]/75">
+            <div class="flex flex-col gap-5 border-b border-brand-400/15 px-6 py-6 md:flex-row md:items-end md:justify-between md:px-8 md:py-7">
+                <div class="max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-300">NeurIPS 2026 Workshop</p>
+                    <h1 class="mt-2 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-[2.35rem]">
+                        RoboPAD: Post-Training Adaptation of Robot Foundation Models
+                    </h1>
+                    <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100/75">
+                        Adaptation, reasoning, and evaluation for robot foundation models after pretraining.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 md:justify-end">
+                    <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-brand-100">Dec 12–13, 2026</span>
+                    <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-brand-100">Paris, France</span>
+                </div>
+            </div>
+            <img src="teaser.png?v=10" alt="RoboPAD workshop teaser: post-training adaptation pipeline for robot foundation models" class="block h-auto w-full" loading="eager" decoding="async" />
+            <div class="teaser-easter-egg px-6 py-4 md:px-8 md:py-5">
+                <p class="text-sm leading-relaxed text-brand-100/60 md:text-[0.95rem]">
+                    <span class="mr-1.5 inline-flex align-[-0.15em]" aria-hidden="true">
+                        <svg width="1.05em" height="1.05em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="12" cy="13.2" rx="7.2" ry="8.8" fill="#c4b5fd"/>
+                            <ellipse cx="12" cy="13.2" rx="7.2" ry="8.8" fill="url(#eggShine)" opacity="0.55"/>
+                            <path d="M5.4 11.2c2.2 1.1 4.4 1.6 6.6 1.6s4.4-.5 6.6-1.6" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M5.6 15.4c2.1.9 4.2 1.35 6.4 1.35s4.3-.45 6.4-1.35" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"/>
+                            <circle cx="9.2" cy="9.1" r="1.05" fill="#7c3aed"/>
+                            <circle cx="14.8" cy="10" r="0.85" fill="#6d28d9"/>
+                            <circle cx="12.1" cy="17.6" r="0.9" fill="#8b5cf6"/>
+                            <defs>
+                                <linearGradient id="eggShine" x1="8" y1="5" x2="16" y2="20" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#ffffff" stop-opacity="0.75"/>
+                                    <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <span class="font-semibold text-brand-200/90">Paris Easter egg:</span>
+                    How many French touches can you spot in the teaser above? When you submit on
+                    <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-200 underline decoration-brand-400/35 underline-offset-2 hover:text-white">OpenReview</a>,
+                    include a short list of the elements you find—authors who catch enough of them will receive a small workshop gift in Paris.
+                </p>
+            </div>
+        </header>
+
+        <section id="about" class="panel fade-up mb-10 rounded-2xl p-7 md:p-9" style="animation-delay:0.05s">
+            <h2 class="section-title">About the Workshop</h2>
+            <p class="max-w-4xl text-[1.06rem] leading-relaxed text-brand-100/80">
+                Pretrained robot foundation models are increasingly capable, yet real-world deployment still requires adaptation to new environments, embodiments, tasks, and failures. RoboPAD focuses on <strong class="font-semibold text-white">post-training</strong>: how to adapt, correct, evaluate, and safely improve these models after pretraining.
+            </p>
+            <p class="mt-4 max-w-4xl text-[1.06rem] leading-relaxed text-brand-100/80">
+                We bring together researchers in robot learning, reinforcement learning, foundation models, world models, and embodied AI to consolidate post-training as a shared research agenda.
+            </p>
+            <div class="mt-8">
+                <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-300/80">Topics</h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Human Feedback / Intervention</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Policy Optimization / Specialization</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">World Model / Simulation</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Reasoning &amp; Memory</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Cross-Embodiment Adaptation</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Evaluation &amp; Safety</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="call-for-papers" class="panel fade-up mb-10 rounded-2xl p-7 md:p-9" style="animation-delay:0.1s">
+            <h2 class="section-title">Call for Papers</h2>
+            <p class="mb-8 max-w-3xl text-[1.06rem] leading-relaxed text-brand-100/80">
+                We welcome work in progress, under-review work, and unpublished or preprint work substantially reframed as open-problem, benchmark, or perspective contributions. Archival published papers are not eligible.
+            </p>
+
+            <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand-300/80">Important Dates</h3>
+            <div class="mb-9 grid gap-3 sm:grid-cols-3">
+                <div class="date-card rounded-2xl p-5">
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Submission</p>
+                    <p class="mt-2 text-xl font-extrabold tracking-tight text-white">Aug 29, 2026</p>
+                    <p class="mt-1 text-sm text-brand-100/55">Anywhere on Earth (AoE)</p>
+                </div>
+                <div class="date-card rounded-2xl p-5">
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Notification</p>
+                    <p class="mt-2 text-xl font-extrabold tracking-tight text-white">Sep 29, 2026</p>
+                    <p class="mt-1 text-sm text-brand-100/55">Anywhere on Earth (AoE)</p>
+                </div>
+                <div class="date-card rounded-2xl p-5">
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Workshop</p>
+                    <p class="mt-2 text-xl font-extrabold tracking-tight text-white">Dec 12–13, 2026</p>
+                    <p class="mt-1 text-sm text-brand-100/55">Paris, France</p>
+                </div>
+            </div>
+
+            <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand-300/80">Submission Overview</h3>
+            <div class="mb-7 grid gap-3 md:grid-cols-2">
+                <div class="guide-card rounded-2xl px-5 py-4">
+                    <p class="text-sm font-bold text-white">Format</p>
+                    <p class="mt-1.5 text-sm leading-relaxed text-brand-100/65">
+                        Unified upper bound of <span class="text-brand-200 font-semibold">9 pages of main content</span>, consistent with the standard NeurIPS conference content page limit. Shorter workshop-style submissions (e.g., 4–7 pages) are fully welcome; the 9-page cap is an upper bound, not a target length. References and appendix are unlimited.
+                    </p>
+                </div>
+                <div class="guide-card rounded-2xl px-5 py-4">
+                    <p class="text-sm font-bold text-white">Review &amp; status</p>
+                    <p class="mt-1.5 text-sm leading-relaxed text-brand-100/65">
+                        Double-blind review via <span class="text-brand-200 font-semibold">OpenReview</span>. <span class="text-brand-200 font-semibold">Non-archival</span> submission: accepted work is presented at the workshop and will not appear in the official NeurIPS proceedings. Accepted papers may be assigned to a poster or oral slot, and one submission will receive the Best Paper Award.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-brand-400/30 bg-brand-500/10 px-5 py-2.5 text-sm font-semibold text-brand-100 transition hover:border-brand-300/50 hover:bg-brand-500/20">
+                    OpenReview Portal
+                </a>
+                <a href="call-for-papers.html" class="inline-flex items-center rounded-full bg-brand-300 px-5 py-2.5 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">
+                    Full Call for Papers
+                </a>
+            </div>
+        </section>
+
+        <section id="challenge" class="panel fade-up mb-10 rounded-2xl p-7 md:p-9" style="animation-delay:0.12s">
+            <h2 class="section-title">Associated Challenge</h2>
+            <div class="guide-card rounded-2xl p-6 md:p-7">
+                <div class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+                    <div class="max-w-3xl">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Associated with RoboPAD @ NeurIPS 2026</p>
+                        <h3 class="mt-2 text-xl font-extrabold tracking-tight text-white md:text-2xl">RoboWorld Challenge 2026</h3>
+                        <p class="mt-3 text-[1.05rem] leading-relaxed text-brand-100/80">
+                            <a href="https://roboworld2026.github.io/" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-200 underline decoration-brand-400/40 underline-offset-2 hover:text-white">RoboWorld 2026</a>
+                            is an independently organized challenge associated with the RoboPAD Workshop at NeurIPS 2026. It focuses on embodied world modeling for robotics and autonomous driving across multiple tracks.
+                        </p>
+                        <p class="mt-3 text-sm leading-relaxed text-brand-100/55">
+                            Challenge logistics, registration, and evaluation are managed by the RoboWorld organizing team; participation is separate from RoboPAD paper submission.
+                        </p>
+                    </div>
+                    <a href="https://roboworld2026.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center self-start rounded-full bg-brand-300 px-5 py-2.5 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">
+                        Visit Challenge Site
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="speakers" class="panel mb-10 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Invited Speakers</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <a href="https://www.di.ens.fr/~laptev/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/20 bg-brand-500/[0.08] p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-300/45 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
+                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/25 bg-black/30 text-xs text-brand-300 opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-300/30 via-brand-500/20 to-transparent blur-[8px]"></div>
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/30 transition duration-200 group-hover:ring-brand-300/60">
+                            <img src="img/speakers/ivan_laptev.jpg" alt="Ivan Laptev" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-white transition duration-200 group-hover:text-brand-200">Ivan Laptev</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand-300">Professor</p>
+                    <p class="mt-2 text-sm leading-relaxed text-brand-100/55">MBZUAI &middot; on leave from INRIA Paris</p>
+                </a>
+                <a href="https://www.comp.nus.edu.sg/~leegh/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/20 bg-brand-500/[0.08] p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-300/45 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
+                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/25 bg-black/30 text-xs text-brand-300 opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-300/30 via-brand-500/20 to-transparent blur-[8px]"></div>
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/30 transition duration-200 group-hover:ring-brand-300/60">
+                            <img src="img/speakers/gim_hee_lee.png" alt="Gim Hee Lee" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-white transition duration-200 group-hover:text-brand-200">Gim Hee Lee</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand-300">Associate Professor</p>
+                    <p class="mt-2 text-sm leading-relaxed text-brand-100/55">National University of Singapore</p>
+                </a>
+                <a href="https://elliotchanesane31.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/20 bg-brand-500/[0.08] p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-300/45 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
+                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/25 bg-black/30 text-xs text-brand-300 opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-300/30 via-brand-500/20 to-transparent blur-[8px]"></div>
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/30 transition duration-200 group-hover:ring-brand-300/60">
+                            <img src="img/speakers/elliot_chane_sane.jpeg" alt="Elliot Chane-Sane" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-white transition duration-200 group-hover:text-brand-200">Elliot Chane-Sane</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand-300">AI Scientist, Robotics</p>
+                    <p class="mt-2 text-sm leading-relaxed text-brand-100/55">Mistral AI</p>
+                </a>
+                <div class="flex w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-brand-400/35 bg-black/10 p-6 text-center backdrop-blur-[2px] transition duration-200 hover:border-brand-300/55 hover:bg-brand-500/[0.08]">
+                    <div class="mb-4 flex h-32 w-32 items-center justify-center rounded-full border border-dashed border-brand-400/40 bg-black/20">
+                        <span class="text-4xl font-thin leading-none text-brand-300/60" aria-hidden="true">+</span>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-brand-200">More Speakers</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand-300/80">To be announced</p>
+                    <p class="mt-2 text-sm leading-relaxed text-brand-100/50">Stay tuned for additional invited speakers soon.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="panel mb-10 rounded-2xl p-7 md:p-8">
+            <h2 class="section-title">Program</h2>
+            <div class="rounded-2xl border border-dashed border-brand-400/25 bg-black/20 px-5 py-11 text-center">
+                <p class="text-2xl font-extrabold tracking-tight text-brand-200">Coming Soon</p>
+                <p class="mt-2 text-sm text-brand-100/55">Detailed schedule will be released later.</p>
+            </div>
+        </section>
+
+        <section id="organizers" class="panel mb-10 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Organizers</h2>
+            <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4 justify-items-center lg:grid-cols-4">
+                    <a href="https://sj-li.com/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/shijie_li.jpg" alt="Shijie Li" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Shijie Li</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">A*STAR</p>
+                    </a>
+                    <a href="https://cshizhe.github.io/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/shizhe_chen.jpg" alt="Shizhe Chen" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Shizhe Chen</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">Inria Paris</p>
+                    </a>
+                    <a href="https://ziweiwangthu.github.io/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/ziwei_wang.jpg" alt="Ziwei Wang" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Ziwei Wang</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">NTU</p>
+                    </a>
+                    <a href="https://duanjiafei.com/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/jiafei_duan.jpg" alt="Jiafei Duan" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Jiafei Duan</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">University of Washington</p>
+                    </a>
+                </div>
+                <div class="mx-auto grid max-w-3xl grid-cols-1 gap-4 justify-items-center sm:grid-cols-3">
+                    <a href="https://sihaoevery.github.io/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/sihao_lin.jpeg" alt="Sihao Lin" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Sihao Lin</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">Adelaide University</p>
+                    </a>
+                    <a href="https://icontrol.ri.cmu.edu/people/changliu.html" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/changliu_liu.jpg" alt="Changliu Liu" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Changliu Liu</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">Carnegie Mellon University</p>
+                    </a>
+                    <a href="https://alr-kit.de/team/geri/" target="_blank" rel="noopener noreferrer" class="person-card flex w-full max-w-[11.5rem] flex-col items-center rounded-2xl p-5 text-center">
+                        <div class="mb-3 h-28 w-28 overflow-hidden rounded-full ring-2 ring-brand-400/25">
+                            <img src="img/organizers/Gerhard_Neumann.jpeg" alt="Gerhard Neumann" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                        <h3 class="text-base font-bold text-white">Gerhard Neumann</h3>
+                        <p class="mt-1 text-sm text-brand-100/55">KIT</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="panel mb-6 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Contact</h2>
+            <p class="text-[1.06rem] text-brand-100/80">For inquiries about the workshop, reach out via email:</p>
+            <a href="mailto:Li_Shijie@a-star.edu.sg" class="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/15 px-5 py-2.5 text-sm font-semibold text-brand-100 transition hover:border-brand-300/55 hover:bg-brand-500/25">
+                Li_Shijie@a-star.edu.sg
+            </a>
+        </section>
+    </main>
+
+    <footer class="border-t border-brand-400/10 py-8 text-center">
+        <p class="text-sm text-brand-100/40">&copy; 2026 RoboPAD Workshop Organizers</p>
+    </footer>
+</body>
+</html>
