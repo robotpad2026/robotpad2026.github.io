@@ -147,11 +147,6 @@
         @media (prefers-reduced-motion: reduce) {
             .fade-up { animation: none; }
         }
-
-        .teaser-easter-egg {
-            border-top: 1px solid var(--line);
-            background: var(--surface-2);
-        }
     </style>
     <script>
         tailwind.config = {
@@ -181,13 +176,6 @@
 </head>
 <body class="min-h-screen">
     <div class="sticky top-0 z-50 w-full">
-        <div class="border-b border-brand-400/20 bg-gradient-to-r from-violet-950/95 via-fuchsia-950/80 to-indigo-950/95 px-4 py-2.5 text-center backdrop-blur">
-            <p class="text-sm font-medium text-brand-100 md:text-base">
-                <span class="font-semibold text-brand-200">Call for Papers Now Open</span>
-                <span class="mx-2 text-brand-400/50">·</span>
-                Submission Deadline: <span class="text-white">September 10, 2026 (AoE)</span>
-            </p>
-        </div>
 
         <nav class="border-b border-black/[0.07] bg-[#faf8f4]/85 backdrop-blur-xl">
             <div class="container mx-auto max-w-6xl px-4">
@@ -197,13 +185,12 @@
                     </a>
                     <div class="hidden items-center gap-7 md:flex">
                         <a href="#about" class="nav-link text-sm font-medium">About</a>
+                        <a href="#speakers" class="nav-link text-sm font-medium">Speakers</a>
+                        <a href="#schedule" class="nav-link text-sm font-medium">Schedule</a>
                         <a href="call-for-papers.html" class="nav-link text-sm font-medium">Call for Papers</a>
                         <a href="#challenge" class="nav-link text-sm font-medium">Challenge</a>
-                        <a href="#speakers" class="nav-link text-sm font-medium">Speakers</a>
-                        <a href="#schedule" class="nav-link text-sm font-medium">Program</a>
                         <a href="#organizers" class="nav-link text-sm font-medium">Organizers</a>
                         <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
-                        <a href="call-for-papers.html" class="rounded-full bg-brand-300 px-4 py-2 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">Submit</a>
                     </div>
                     <div class="md:hidden">
                         <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="rounded-lg border border-brand-400/40 p-2 text-ink" aria-label="Open menu">
@@ -215,10 +202,10 @@
                 </div>
                 <div id="mobile-menu" class="hidden space-y-1 pb-4 md:hidden">
                     <a href="#about" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">About</a>
+                    <a href="#speakers" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Speakers</a>
+                    <a href="#schedule" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Schedule</a>
                     <a href="call-for-papers.html" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Call for Papers</a>
                     <a href="#challenge" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Challenge</a>
-                    <a href="#speakers" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Speakers</a>
-                    <a href="#schedule" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Program</a>
                     <a href="#organizers" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Organizers</a>
                     <a href="#contact" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Contact</a>
                 </div>
@@ -239,36 +226,11 @@
                     </p>
                 </div>
                 <div class="flex flex-wrap gap-2 md:justify-end">
-                    <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-ink">Dec 12–13, 2026</span>
+                    <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-ink">Dec 12, 2026</span>
                     <span class="pill inline-flex items-center rounded-full px-3.5 py-1.5 text-sm text-ink">Paris, France</span>
                 </div>
             </div>
             <img src="teaser.png?v=10" alt="RoboPAD workshop teaser: post-training adaptation pipeline for robot foundation models" class="block h-auto w-full" loading="eager" decoding="async" />
-            <div class="teaser-easter-egg px-6 py-4 md:px-8 md:py-5">
-                <p class="text-sm leading-relaxed text-muted/70 md:text-[0.95rem]">
-                    <span class="mr-1.5 inline-flex align-[-0.15em]" aria-hidden="true">
-                        <svg width="1.05em" height="1.05em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="12" cy="13.2" rx="7.2" ry="8.8" fill="#a78bfa"/>
-                            <ellipse cx="12" cy="13.2" rx="7.2" ry="8.8" fill="url(#eggShine)" opacity="0.55"/>
-                            <path d="M5.4 11.2c2.2 1.1 4.4 1.6 6.6 1.6s4.4-.5 6.6-1.6" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round"/>
-                            <path d="M5.6 15.4c2.1.9 4.2 1.35 6.4 1.35s4.3-.45 6.4-1.35" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"/>
-                            <circle cx="9.2" cy="9.1" r="1.05" fill="#7c3aed"/>
-                            <circle cx="14.8" cy="10" r="0.85" fill="#6d28d9"/>
-                            <circle cx="12.1" cy="17.6" r="0.9" fill="#8b5cf6"/>
-                            <defs>
-                                <linearGradient id="eggShine" x1="8" y1="5" x2="16" y2="20" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#ffffff" stop-opacity="0.75"/>
-                                    <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </span>
-                    <span class="font-semibold text-accent/90">Paris Easter egg:</span>
-                    How many French touches can you spot in the teaser above? When you submit on
-                    <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline decoration-brand-400/45 underline-offset-2 hover:text-ink">OpenReview</a>,
-                    include a short list of the elements you find—authors who catch enough of them will receive a small workshop gift in Paris.
-                </p>
-            </div>
         </header>
 
         <section id="about" class="panel fade-up mb-10 rounded-2xl p-7 md:p-9" style="animation-delay:0.05s">
@@ -282,13 +244,186 @@
             <div class="mt-8">
                 <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent/70">Topics</h3>
                 <div class="flex flex-wrap gap-2.5">
-                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Human Feedback / Intervention</span>
-                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Policy Optimization / Specialization</span>
-                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">World Model / Simulation</span>
-                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Reasoning &amp; Memory</span>
-                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Cross-Embodiment Adaptation</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Vision-Language-Action Models</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">World Models</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">World Action Models</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Reinforcement Learning</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Learning from Human Feedback</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Real-to-Sim-to-Real</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Test-Time Adaptation</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Continual &amp; Lifelong Learning</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Cross-Embodiment Transfer</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Embodied Reasoning &amp; Memory</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Agent Harnesses</span>
+                    <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Self-Improvement</span>
                     <span class="topic-chip inline-flex rounded-full px-3.5 py-1.5 text-sm font-medium">Evaluation &amp; Safety</span>
                 </div>
+            </div>
+        </section>
+
+        <section id="speakers" class="panel mb-10 rounded-2xl p-7 md:p-9">
+            <h2 class="section-title">Invited Speakers</h2>
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="https://www.di.ens.fr/~laptev/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-[#ece4d8] bg-white p-6 text-center shadow-[0_10px_30px_-20px_rgba(58,47,77,0.3)] transition duration-200 hover:-translate-y-1 hover:border-[#ded2c0] hover:shadow-[0_18px_40px_-20px_rgba(58,47,77,0.4)]">
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-[#ece4d8] transition duration-200 group-hover:ring-[#ded2c0]">
+                            <img src="img/speakers/ivan_laptev.jpg" alt="Ivan Laptev" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Ivan Laptev</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Professor</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/70">MBZUAI</p>
+                </a>
+                <a href="https://www.comp.nus.edu.sg/~leegh/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-[#ece4d8] bg-white p-6 text-center shadow-[0_10px_30px_-20px_rgba(58,47,77,0.3)] transition duration-200 hover:-translate-y-1 hover:border-[#ded2c0] hover:shadow-[0_18px_40px_-20px_rgba(58,47,77,0.4)]">
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-[#ece4d8] transition duration-200 group-hover:ring-[#ded2c0]">
+                            <img src="img/speakers/gim_hee_lee.png" alt="Gim Hee Lee" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Gim Hee Lee</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Associate Professor</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/70">National University of Singapore</p>
+                </a>
+                <a href="https://cordeliaschmid.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-[#ece4d8] bg-white p-6 text-center shadow-[0_10px_30px_-20px_rgba(58,47,77,0.3)] transition duration-200 hover:-translate-y-1 hover:border-[#ded2c0] hover:shadow-[0_18px_40px_-20px_rgba(58,47,77,0.4)]">
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-[#ece4d8] transition duration-200 group-hover:ring-[#ded2c0]">
+                            <img src="img/speakers/cordelia_schmid.jpg" alt="Cordelia Schmid" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Cordelia Schmid</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Research Director</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Inria / Google</p>
+                </a>
+                <a href="https://soujanyaporia.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-[#ece4d8] bg-white p-6 text-center shadow-[0_10px_30px_-20px_rgba(58,47,77,0.3)] transition duration-200 hover:-translate-y-1 hover:border-[#ded2c0] hover:shadow-[0_18px_40px_-20px_rgba(58,47,77,0.4)]">
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-[#ece4d8] transition duration-200 group-hover:ring-[#ded2c0]">
+                            <img src="img/speakers/soujanya_poria.jpg" alt="Soujanya Poria" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Soujanya Poria</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Associate Professor</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Nanyang Technological University</p>
+                </a>
+                <a href="https://elliotchanesane31.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-[#ece4d8] bg-white p-6 text-center shadow-[0_10px_30px_-20px_rgba(58,47,77,0.3)] transition duration-200 hover:-translate-y-1 hover:border-[#ded2c0] hover:shadow-[0_18px_40px_-20px_rgba(58,47,77,0.4)]">
+                    <div class="relative mb-4 h-32 w-32 shrink-0">
+                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-[#ece4d8] transition duration-200 group-hover:ring-[#ded2c0]">
+                            <img src="img/speakers/elliot_chane_sane.jpeg" alt="Elliot Chane-Sane" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Elliot Chane-Sane</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">AI Scientist, Robotics</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Mistral AI</p>
+                </a>
+                <div class="flex w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#ded2c0] bg-[#faf8f4] p-6 text-center transition duration-200 hover:border-[#cbbca6]">
+                    <div class="mb-4 flex h-32 w-32 items-center justify-center rounded-full border border-dashed border-[#ded2c0] bg-white">
+                        <span class="text-4xl font-thin leading-none text-muted/70" aria-hidden="true">+</span>
+                    </div>
+                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink">More Speakers</h3>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted/70">To be announced</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted/65">Stay tuned for additional invited speakers soon.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="panel mb-10 rounded-2xl p-7 md:p-8">
+            <h2 class="section-title">Tentative Schedule</h2>
+            <p class="mb-5 text-sm text-muted/70">December 12, 2026 · Paris, France · Times are local (CET) and subject to change.</p>
+            <div class="overflow-x-auto rounded-xl border border-[#ece4d8] bg-white">
+                <table class="w-full text-left text-[1rem]">
+                    <tbody class="divide-y divide-[#ece4d8]">
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">08:50 – 09:00</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Opening Remarks</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">09:00 – 09:35</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Invited Talk: Ivan Laptev</p>
+                                <p class="mt-0.5 text-sm text-muted/70">MBZUAI</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">09:35 – 10:10</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Invited Talk: Gim Hee Lee</p>
+                                <p class="mt-0.5 text-sm text-muted/70">National University of Singapore</p>
+                            </td>
+                        </tr>
+                        <tr class="bg-[#f8f5ef]">
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">10:10 – 10:25</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-muted/70">Coffee Break</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">10:25 – 11:00</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Invited Talk: Cordelia Schmid</p>
+                                <p class="mt-0.5 text-sm text-muted/70">Inria</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">11:00 – 11:30</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Oral &amp; Spotlight Talks</p>
+                                <p class="mt-0.5 text-sm text-muted/70">Selected authors</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">11:30 – 12:30</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Poster Session 1</p>
+                            </td>
+                        </tr>
+                        <tr class="bg-[#f8f5ef]">
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">12:30 – 14:00</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-muted/70">Lunch Break</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">14:00 – 14:35</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Invited Talk: Soujanya Poria</p>
+                                <p class="mt-0.5 text-sm text-muted/70">Nanyang Technological University</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">14:35 – 15:10</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Invited Talk: Elliot Chane-Sane</p>
+                                <p class="mt-0.5 text-sm text-muted/70">Mistral AI</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">15:10 – 15:40</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Oral &amp; Spotlight Talks</p>
+                                <p class="mt-0.5 text-sm text-muted/70">Selected authors</p>
+                            </td>
+                        </tr>
+                        <tr class="bg-[#f8f5ef]">
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">15:40 – 15:55</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-muted/70">Coffee Break</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">15:55 – 16:25</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">RoboWorld Challenge</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-3 align-top font-semibold tabular-nums text-accent">16:25 – 17:25</td>
+                            <td class="px-4 py-3">
+                                <p class="font-semibold text-ink">Poster Session 2</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -312,7 +447,7 @@
                 </div>
                 <div class="date-card rounded-2xl p-5">
                     <p class="text-xs font-semibold uppercase tracking-[0.16em] text-accent">Workshop</p>
-                    <p class="mt-2 text-xl font-extrabold tracking-tight text-ink">Dec 12–13, 2026</p>
+                    <p class="mt-2 text-xl font-extrabold tracking-tight text-ink">Dec 12, 2026</p>
                     <p class="mt-1 text-sm text-muted/70">Paris, France</p>
                 </div>
             </div>
@@ -361,88 +496,6 @@
                         Visit Challenge Site
                     </a>
                 </div>
-            </div>
-        </section>
-
-        <section id="speakers" class="panel mb-10 rounded-2xl p-7 md:p-9">
-            <h2 class="section-title">Invited Speakers</h2>
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                <a href="https://www.di.ens.fr/~laptev/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/35 bg-accent-soft p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
-                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-black/45 text-xs text-accent opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
-                    <div class="relative mb-4 h-32 w-32 shrink-0">
-                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/25 to-transparent blur-[8px]"></div>
-                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/50 transition duration-200 group-hover:ring-brand-400/70">
-                            <img src="img/speakers/ivan_laptev.jpg" alt="Ivan Laptev" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Ivan Laptev</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Professor</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/70">MBZUAI</p>
-                </a>
-                <a href="https://www.comp.nus.edu.sg/~leegh/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/35 bg-accent-soft p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
-                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-black/45 text-xs text-accent opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
-                    <div class="relative mb-4 h-32 w-32 shrink-0">
-                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/25 to-transparent blur-[8px]"></div>
-                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/50 transition duration-200 group-hover:ring-brand-400/70">
-                            <img src="img/speakers/gim_hee_lee.png" alt="Gim Hee Lee" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Gim Hee Lee</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Associate Professor</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/70">National University of Singapore</p>
-                </a>
-                <a href="https://elliotchanesane31.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/35 bg-accent-soft p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
-                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-black/45 text-xs text-accent opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
-                    <div class="relative mb-4 h-32 w-32 shrink-0">
-                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/25 to-transparent blur-[8px]"></div>
-                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/50 transition duration-200 group-hover:ring-brand-400/70">
-                            <img src="img/speakers/elliot_chane_sane.jpeg" alt="Elliot Chane-Sane" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Elliot Chane-Sane</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">AI Scientist, Robotics</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Mistral AI</p>
-                </a>
-                <a href="https://cordeliaschmid.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/35 bg-accent-soft p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
-                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-black/45 text-xs text-accent opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
-                    <div class="relative mb-4 h-32 w-32 shrink-0">
-                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/25 to-transparent blur-[8px]"></div>
-                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/50 transition duration-200 group-hover:ring-brand-400/70">
-                            <img src="img/speakers/cordelia_schmid.jpg" alt="Cordelia Schmid" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Cordelia Schmid</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Research Director</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Inria Paris / Google Research</p>
-                </a>
-                <a href="https://soujanyaporia.github.io/" target="_blank" rel="noopener noreferrer" class="speaker-card group relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-brand-400/35 bg-accent-soft p-6 text-center shadow-[0_10px_30px_-18px_rgba(88,28,135,0.45)] transition duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-[0_18px_44px_-18px_rgba(88,28,135,0.55)]">
-                    <span class="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-black/45 text-xs text-accent opacity-80 transition group-hover:scale-110 group-hover:opacity-100" aria-hidden="true">↗</span>
-                    <div class="relative mb-4 h-32 w-32 shrink-0">
-                        <div class="pointer-events-none absolute inset-0 -z-0 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/25 to-transparent blur-[8px]"></div>
-                        <div class="relative h-full w-full overflow-hidden rounded-full ring-2 ring-brand-400/50 transition duration-200 group-hover:ring-brand-400/70">
-                            <img src="img/speakers/soujanya_poria.jpg" alt="Soujanya Poria" class="h-full w-full object-cover" loading="lazy" decoding="async" />
-                        </div>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-ink transition duration-200 group-hover:text-accent">Soujanya Poria</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Associate Professor</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/70">Nanyang Technological University</p>
-                </a>
-                <div class="flex w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-brand-400/55 bg-[#f3efe6] p-6 text-center backdrop-blur-[2px] transition duration-200 hover:border-brand-400/60 hover:bg-accent-soft">
-                    <div class="mb-4 flex h-32 w-32 items-center justify-center rounded-full border border-dashed border-brand-400/60 bg-[#f3efe6]">
-                        <span class="text-4xl font-thin leading-none text-muted/70" aria-hidden="true">+</span>
-                    </div>
-                    <h3 class="mt-1 text-[1.05rem] font-extrabold tracking-tight text-accent">More Speakers</h3>
-                    <p class="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent/70">To be announced</p>
-                    <p class="mt-2 text-sm leading-relaxed text-muted/65">Stay tuned for additional invited speakers soon.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="schedule" class="panel mb-10 rounded-2xl p-7 md:p-8">
-            <h2 class="section-title">Program</h2>
-            <div class="rounded-2xl border border-dashed border-brand-400/40 bg-[#f3efe6] px-5 py-11 text-center">
-                <p class="text-2xl font-extrabold tracking-tight text-accent">Coming Soon</p>
-                <p class="mt-2 text-sm text-muted/70">Detailed schedule will be released later.</p>
             </div>
         </section>
 

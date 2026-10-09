@@ -3,7 +3,7 @@
 Workshop website for **RoboPAD: Post-Training Adaptation of Robot Foundation Models**.
 
 - **Conference:** NeurIPS 2026
-- **Date:** One day within Dec 12–13, 2026
+- **Date:** Dec 12, 2026
 - **Location:** Paris, France
 
 ## Local preview

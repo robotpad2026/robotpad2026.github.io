@@ -45,7 +45,7 @@
             font-size: 1.55rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            color: #fff;
+            color: var(--heading);
             margin-bottom: 1.1rem;
             display: flex;
             align-items: center;
@@ -120,12 +120,9 @@
 
         .kpi-pill {
             border-radius: 999px;
-            border: 2px solid rgba(167, 139, 250, 0.55);
-            background:
-                radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.16), transparent 60%),
-                var(--accent-soft);
-            box-shadow: 0 16px 44px rgba(124, 58, 237, 0.22);
+            border: 1px solid var(--line-strong);
+            background: var(--surface);
+            box-shadow: 0 14px 34px -22px rgba(58, 47, 77, 0.35);
             padding: 22px 24px;
             text-align: center;
         }
@@ -149,29 +146,24 @@
 
         .kpi-text em {
             all: unset;
-            color: #0e7490;
-            font-weight: 960;
+            color: var(--muted);
+            font-weight: 700;
         }
 
         .kpi-pill--cta {
-            border: 2px solid rgba(221, 214, 254, 0.9);
-            background:
-                radial-gradient(circle at 0% 0%, rgba(253, 224, 71, 0.22), transparent 55%),
-                linear-gradient(135deg, #a78bfa 0%, #7c3aed 55%, #6d28d9 100%);
-            box-shadow:
-                0 18px 48px rgba(139, 92, 246, 0.55),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(109, 40, 217, 0.28);
+            background: var(--accent-soft);
+            box-shadow: 0 14px 34px -22px rgba(58, 47, 77, 0.35);
             transform: translateZ(0);
         }
 
         .kpi-pill--cta .kpi-label {
-            color: rgba(255, 255, 255, 0.92);
+            color: var(--accent);
         }
 
         .kpi-pill--cta .kpi-text {
-            color: #fff;
+            color: var(--heading);
             letter-spacing: -0.02em;
-            text-shadow: 0 1px 2px rgba(76, 29, 149, 0.45);
         }
 
         .kpi-pill--cta .cta-row {
@@ -191,50 +183,20 @@
             height: 2.2rem;
             width: 2.2rem;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.22);
+            background: var(--accent);
             color: #ffffff;
             font-weight: 950;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
             transition: transform 180ms ease, background 180ms ease;
         }
 
         .kpi-pill--cta:hover .cta-arrow {
             transform: translateX(4px) translateY(-1px);
-            background: rgba(255, 255, 255, 0.34);
-        }
-
-        .award-card {
-            border-radius: 24px;
-            border: 2px solid rgba(180, 120, 20, 0.45);
-            background:
-                radial-gradient(circle at 0% 0%, rgba(250, 204, 21, 0.22), transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.14), transparent 60%),
-                linear-gradient(165deg, #fdf6e6, #fbf7ef);
-            box-shadow: 0 20px 48px -26px rgba(58, 47, 77, 0.34);
-            padding: 28px;
-        }
-
-        .award-kicker {
-            color: #8a5a00;
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .award-title {
-            margin-top: 10px;
-            font-size: 34px;
-            line-height: 1.05;
-            font-weight: 950;
-            letter-spacing: -0.02em;
-            color: var(--heading);
+            background: var(--violet-deep);
         }
 
         @media (max-width: 640px) {
             .kpi-grid { grid-template-columns: 1fr; }
             .kpi-text { font-size: 22px; }
-            .award-title { font-size: 28px; }
         }
     </style>
     <script>
@@ -260,13 +222,6 @@
 </head>
 <body class="min-h-screen">
     <div class="sticky top-0 z-50 w-full">
-        <div class="border-b border-brand-400/20 bg-gradient-to-r from-violet-950/95 via-fuchsia-950/80 to-indigo-950/95 px-4 py-2.5 text-center backdrop-blur">
-            <p class="text-sm font-medium text-brand-100 md:text-base">
-                <span class="font-semibold text-brand-200">Call for Papers Now Open</span>
-                <span class="mx-2 text-brand-400/50">·</span>
-                Submission Deadline: <span class="text-white">September 10, 2026 (AoE)</span>
-            </p>
-        </div>
 
         <nav class="border-b border-black/[0.07] bg-[#faf8f4]/85 backdrop-blur-xl">
             <div class="container mx-auto max-w-6xl px-4">
@@ -278,10 +233,9 @@
                         <a href="index.html#about" class="nav-link text-sm font-medium">About</a>
                         <a href="call-for-papers.html" class="nav-link active text-sm font-medium">Call for Papers</a>
                         <a href="index.html#speakers" class="nav-link text-sm font-medium">Speakers</a>
-                        <a href="index.html#schedule" class="nav-link text-sm font-medium">Program</a>
+                        <a href="index.html#schedule" class="nav-link text-sm font-medium">Schedule</a>
                         <a href="index.html#organizers" class="nav-link text-sm font-medium">Organizers</a>
                         <a href="index.html#contact" class="nav-link text-sm font-medium">Contact</a>
-                        <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/RoboPAD" target="_blank" rel="noopener noreferrer" class="rounded-full bg-brand-300 px-4 py-2 text-sm font-bold text-[#1a0b33] transition hover:bg-brand-200">Submit</a>
                     </div>
                     <div class="md:hidden">
                         <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="rounded-lg border border-brand-400/40 p-2 text-ink" aria-label="Open menu">
@@ -295,7 +249,7 @@
                     <a href="index.html#about" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">About</a>
                     <a href="call-for-papers.html" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Call for Papers</a>
                     <a href="index.html#speakers" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Speakers</a>
-                    <a href="index.html#schedule" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Program</a>
+                    <a href="index.html#schedule" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Schedule</a>
                     <a href="index.html#organizers" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Organizers</a>
                     <a href="index.html#contact" class="block rounded-lg px-3 py-2 text-ink hover:bg-black/5">Contact</a>
                 </div>
@@ -334,13 +288,6 @@
             </p>
         </section>
 
-        <section class="award-card mb-8">
-            <div class="award-kicker">Awards</div>
-            <div class="award-title">RoboPAD Best Paper Award</div>
-            <p class="mt-4 text-[1.06rem] leading-relaxed text-muted/90">
-                One submission will receive the <strong class="text-ink">Best Paper Award</strong>, with an award certificate and recognition during the workshop. Additional <strong class="text-ink">Best Paper Runner-Up</strong> and <strong class="text-ink">Highlight Papers</strong> may also be recognized. All accepted papers are eligible; the final awardee is selected by the area chairs and organizers based on technical quality, novelty, clarity, and fit to the workshop theme.
-            </p>
-        </section>
 
         <section class="panel mb-8 rounded-2xl p-7 md:p-9">
             <h2 class="section-title">Eligibility &amp; What We Accept</h2>
@@ -484,7 +431,7 @@
         <section class="panel mb-8 rounded-2xl p-7 md:p-9">
             <h2 class="section-title">Presentation &amp; Accepted Papers</h2>
             <p class="text-[1.05rem] leading-relaxed text-muted/85">
-                Accepted papers will be presented in <strong class="text-ink">poster sessions</strong> on the day of the workshop. A subset of papers will additionally be selected for <strong class="text-ink">oral / spotlight</strong> presentations with Q&amp;A. All accepted papers are eligible for the Best Paper Award.
+                Accepted papers will be presented in <strong class="text-ink">poster sessions</strong> on the day of the workshop. A subset of papers will additionally be selected for <strong class="text-ink">oral / spotlight</strong> presentations with Q&amp;A.
             </p>
             <p class="mt-4 text-[1.05rem] leading-relaxed text-muted/85">
                 No formal camera-ready paper is required. Authors are welcome to keep their submission up to date on arXiv and to share slides / posters after acceptance.
@@ -510,7 +457,7 @@
                         </tr>
                         <tr>
                             <td class="px-4 py-3 font-semibold text-accent">Workshop date</td>
-                            <td class="px-4 py-3">One day within 12–13 December 2026, Paris, France</td>
+                            <td class="px-4 py-3">12 December 2026, Paris, France</td>
                         </tr>
                     </tbody>
                 </table>
